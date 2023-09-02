@@ -1,3 +1,5 @@
 .idea
 .venv
 dist
+.tox
+.mypy_cache
