@@ -18,7 +18,15 @@ sdist and/or wheel (depending on `--format` option you have provided, default is
 For testing `chispa` helper library is used 
 (just because it's gotten the most number of stars on Github - https://github.com/MrPowers/chispa)
 
+To run tests with coverage:
+`pytest tests/ --cov databricks_job`
+
 ## tox
+
+`tox` can be useful for testing the app in managed environments
+(i.e. with different versions of Python and/or libraries)
+Usage:
+`tox`
 
 `tox` can be used with `poetry` by running:
 
