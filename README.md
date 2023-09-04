@@ -14,6 +14,15 @@ To build execute:
 
 sdist and/or wheel (depending on `--format` option you have provided, default is both) will land in `dist` dir
 
+## Formatting
+`black` is added to dev dependencies and can be used as a formatter.
+
+To just display what changes black would have applied:
+`black databricks_job tests --diff`
+
+To perform re-formatting:
+`black databricks_job tests`
+
 ## Testing
 For testing `chispa` helper library is used 
 (just because it's gotten the most number of stars on Github - https://github.com/MrPowers/chispa)
