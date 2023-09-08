@@ -13,14 +13,22 @@ pyspark = "3.3.2"
 job = 'databricks_job.hello:main'
 
 [tool.poetry.group.dev.dependencies]
-chispa = "^0.9.2"
-pytest = "^7.4.0"
+pre-commit = "^3.4.0"
+# "d" extra is used by PyCharm
+black = { extras = ["d"], version = "^23.7.0" }
+ruff = "^0.0.287"
 tox = "^4.11.1"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.4.2"
 pytest-cov = "^4.1.0"
-black = "^23.7.0"
+chispa = "^0.9.2"
 
 [tool.black]
-line-length = 99
+line-length = 100
+
+[tool.ruff]
+line-length = 100
 
 [build-system]
 requires = ["poetry-core"]

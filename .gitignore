@@ -4,3 +4,4 @@ dist
 .tox
 .mypy_cache
 .coverage*
+.pytest_cache
