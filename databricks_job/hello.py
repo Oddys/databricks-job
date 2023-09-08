@@ -1,5 +1,5 @@
-from pyspark.sql import SparkSession, DataFrame
-from pyspark.sql.types import StructType, StringType, LongType, StructField
+from pyspark.sql import DataFrame, SparkSession
+from pyspark.sql.types import LongType, StringType, StructField, StructType
 
 
 def create_dataframe(spark: SparkSession) -> DataFrame:

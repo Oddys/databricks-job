@@ -1,5 +1,5 @@
 from pyspark.sql.functions import from_json
-from pyspark.sql.types import StructType, StringType, IntegerType, ArrayType
+from pyspark.sql.types import ArrayType, IntegerType, StringType, StructType
 
 from databricks_job.preparation import get_spark_session
 

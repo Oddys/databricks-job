@@ -1,5 +1,5 @@
 from chispa import assert_df_equality
-from pyspark.sql.types import StructType, StringType, LongType
+from pyspark.sql.types import LongType, StringType, StructType
 
 from databricks_job.hello import create_dataframe
 
