@@ -1,4 +1,6 @@
 .coverage*
+.data
+.env
 .idea
 .mypy_cache
 .pytest_cache
@@ -6,3 +8,4 @@
 .tox
 .venv
 dist
+spark-warehouse

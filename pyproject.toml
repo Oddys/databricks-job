@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "3.9.5"
 pyspark = "3.3.2"
+delta-spark = "~2.3.0"
 
 [tool.poetry.scripts]
 job = 'databricks_job.hello:main'
