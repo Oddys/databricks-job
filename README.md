@@ -7,6 +7,22 @@ Intended for Databricks Runtime 12.2 LTS, i.e. python 3.9.5, spark 3.3.2.
 Note. PySpark version in the project must match Spark version in the env
 (for PyCharm provide SPARK_HOME env var in the run configuration).
 
+## Pre commit
+Automatically performs configured actions before each commit.
+
+Currently configured:
+- `black` (formatting),
+- `ruff` (linting - determining and fixing errors),
+- `mypy` (type checks)
+
+To enable this behaviour after cloning the repo and installing the dependencies execute:
+
+`pre-commit install`
+
+To trigger manually:
+
+`pre-commit run --all-files`
+
 ## Build
 To build execute:
 
@@ -31,16 +47,17 @@ To run tests with coverage:
 `pytest tests/ --cov databricks_job`
 
 ## tox
-
 `tox` can be useful for testing the app in managed environments
-(i.e. with different versions of Python and/or libraries)
+(i.e. with different versions of Python and/or libraries).
+
 Usage:
+
 `tox`
 
-`tox` can be used with `poetry` by running:
+Can also be used with `poetry`:
 
 ```poetry run tox```
 
-To perform a fresh run without `tox` and `mypy` caches:
+To perform a fresh run without `tox` cache:
 
-```rm -rf .tox .mypy_cache && poetry run tox```
+```rm -rf .tox && tox```
