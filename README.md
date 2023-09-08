@@ -4,8 +4,14 @@ A simple PySpark template for a wheel task creation in Databricks Jobs
 
 Intended for Databricks Runtime 12.2 LTS, i.e. python 3.9.5, spark 3.3.2.
 
-Note. PySpark version in the project must match Spark version in the env
-(for PyCharm provide SPARK_HOME env var in the run configuration).
+To run locally from shell `SPARK_HOME` should be set to a directory containing Spark/PySpark 3.3.2.
+For convenience, this variable (and any others, e.g., `DATA_DIR` - a local path for writing data) 
+could be set in `.env` file. To export those variables after starting a shell execute:
+
+`source .env`
+
+To run from PyCharm required environment variables could be set in the run configuration.
+
 
 ## Pre commit
 Automatically performs configured actions before each commit.
