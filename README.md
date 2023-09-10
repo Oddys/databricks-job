@@ -4,14 +4,55 @@ A simple PySpark template for a wheel task creation in Databricks Jobs
 
 Intended for Databricks Runtime 12.2 LTS, i.e. python 3.9.5, spark 3.3.2.
 
+## Execution
+
+### Locally
+
 To run locally from shell `SPARK_HOME` should be set to a directory containing Spark/PySpark 3.3.2.
 For convenience, this variable (and any others, e.g., `DATA_DIR` - a local path for writing data) 
-could be set in `.env` file. To export those variables after starting a shell execute:
+could be set via [prepare_env_for_local_run.sh](scripts/prepare_env_for_local_run.sh) file. 
 
-`source .env`
+To prepare the local environment (export the variables and cleanup the output directory) 
+execute before running your code:
+
+`source scripts/prepare_env_for_local_run.sh`
 
 To run from PyCharm required environment variables could be set in the run configuration.
 
+**_NB!_** When executing `hello_delta.py` make sure the spark session is created via:
+
+`configure_spark_with_delta_pip(session_builder).getOrCreate()`
+
+(Uncomment that line and comment out `session_builder.getOrCreate()`) 
+
+### Cluster
+To set environment variables there 2 options. 
+
+Via UI:
+
+1. On the cluster configuration page, click the **Advanced Options** toggle.
+
+2. Click the **Spark** tab.
+
+3. Set the environment variables in the **Environment Variables** field.
+
+See: https://docs.databricks.com/en/clusters/configure.html#env-var
+
+Via init script:
+
+See [init script template](scripts/db_cluster_init_script_TEMPLATE.sh)
+
+_**NB!**_ Shebang is required
+
+_**NB!**_ Executing just `export NAME=VALUE` works for notebooks, but for some reason does not work for jobs
+(a set variable is not accessible via `os.environ.get("NAME")`). 
+So, for jobs `echo export ... >> /etc/environment` is required.
+
+**_NB!_** When providing an init script from the Workspace make sure the `/Workspace` part 
+is not included in the path, i.e. specify `/Users/<user>/path/to/scripts/script.sh` instead of 
+`/Workspace/Users/<user>/path/to/scripts/script.sh`
+
+See: https://docs.databricks.com/en/init-scripts/index.html
 
 ## Pre commit
 Automatically performs configured actions before each commit.

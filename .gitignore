@@ -1,6 +1,5 @@
 .coverage*
 .data
-.env
 .idea
 .mypy_cache
 .pytest_cache

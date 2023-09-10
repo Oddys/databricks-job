@@ -1,5 +1,4 @@
 import os
-import shutil
 from datetime import date
 
 from delta import DeltaTable, configure_spark_with_delta_pip
@@ -15,6 +14,11 @@ def delta_main() -> None:
             "spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog"
         )
     )
+
+    # When running on cluster:
+    # spark = session_builder.getOrCreate()
+
+    # When running locally:
     spark = configure_spark_with_delta_pip(session_builder).getOrCreate()
 
     data = [
@@ -22,16 +26,13 @@ def delta_main() -> None:
         ("Bob", 2),
     ]
     schema = ("name", "id")
-    df0 = spark.createDataFrame(data, schema).coalesce(1)
+    df = spark.createDataFrame(data, schema).coalesce(1)
 
     data_dir = os.environ.get("DATA_DIR", ".")
     path = f"{data_dir}/hello_delta"
 
-    print("Cleaning target path")
-    if os.path.exists(path):
-        shutil.rmtree(path)
     print("Saving to table")
-    df0.write.format("delta").save(path)
+    df.write.format("delta").save(path)
 
     table = DeltaTable.forPath(spark, path)
     print("Data in table:")

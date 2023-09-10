@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "databricks-job"
-version = "0.1.1"
+version = "0.1.2"
 description = ""
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
@@ -11,7 +11,8 @@ pyspark = "3.3.2"
 delta-spark = "~2.3.0"
 
 [tool.poetry.scripts]
-job = 'databricks_job.hello:main'
+hello = 'databricks_job.hello:main'
+hello-delta = 'databricks_job.hello_delta:delta_main'
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^3.4.0"
